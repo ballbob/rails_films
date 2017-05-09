@@ -28,4 +28,13 @@ class AwardsController < ApplicationController
     render json: award
   end
 
+  def destroy
+    award = Award.find(params[:id])
+    if award.destroy!
+      render json: {status: :success}
+    else
+      render json: {status: :delete_failed}
+    end
+  end
+
 end
