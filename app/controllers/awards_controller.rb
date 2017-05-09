@@ -6,13 +6,26 @@ class AwardsController < ApplicationController
       only: [:name],
       include: {
         film: {
-          only: [:title, :genre]
+          only: [:title],
+          include: {
+            genre: {
+              only: [:name]
+            }
+          }
         },
         talent: {
           only: [:name, :job]
           }
         }
       })
+  end
+
+  def create
+    award = Award.create({
+      name: params[:name],
+      film_id: params[:film_id],
+      talent_id: params[:talent_id]})
+    render json: award
   end
 
 end
