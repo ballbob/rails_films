@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   resources :films do
-    resources :genres
+    resources :awards
   end
 end
