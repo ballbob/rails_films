@@ -5,4 +5,9 @@ class FilmsController < ApplicationController
     render json: films
   end
 
+  def show
+    film = Film.find(params[:id])
+    render json:film
+  end
+
 end
